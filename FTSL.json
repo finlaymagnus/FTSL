@@ -1,0 +1,3 @@
+
+$.getJSON("http://newsapi.org/v2/everything?", function(){
+
