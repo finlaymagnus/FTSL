@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta namme="viewpoint" content="width=device-width, initial-scale"/>
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<link 
+  rel="Stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.css"/>
+<link rel="stylesheet" href="Style.css"/>
+<title>FTSL</title>
+</head>
+<img src="Logo.jpg" width="200" height="200"  alt="Logo" style="vertical-align:top">
+
+
+
+<section id= "SiteNavigation">
+  <div class="topnav">
+    <a class="active" href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="#Saved">Saved</a>
+  </div>
+</section>
+
+
+ 
+<body>
+
+  <style>
+  div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: cent;
+    width: 180px; 
+  }
+  
+  div.gallery:hover {
+    border: 1px solid #777 ;
+  }
+  
+  div.gallery img {
+    width: 100%;
+    height: auto;
+  }
+  
+  div.desc {
+    padding: 15px;
+    text-align: center;
+  }
+  form.search {
+    position: right;
+
+  }
+  </style>
+
+<form class="search" action="">
+<label for="">Search the latest headlines...</label>
+<input class="input" type="text"/><br>
+<input type="Submit" />
+</form>
+
+
+  <div class="gallery">
+    <a target="_blank" href="football.jpg">
+      <img src="football.jpg" alt="football" width="600" height="400">
+    </a>
+    <div class="desc">Football</div>
+  </div>
+  
+  <div class="gallery">
+    <a target="_blank" href="rugby.jpg">
+      <img src="rugby.jpg" alt="rugby" width="600" height="400">
+    </a>
+    <div class="desc">Rugby</div>
+  </div>
+  
+  <div class="gallery">
+    <a target="_blank" href="cricket.jpg">
+      <img src="cricket.jpg" alt="cricket" width="600" height="400">
+    </a>
+    <div class="desc">Cricket</div>
+  </div>
+  
+  <div class="gallery">
+    <a target="_blank" href="hockey.jpg">
+      <img src="hockey.jpg" alt="hockey" width="600" height="400">
+    </a>
+    <div class="desc">hockey</div>
+  </div>
+
+
+    <div class="container">
+        <ul class="class-list"></ul>
+    </div>
+
+
+
+
+    <div class="container">
+     <ul class="news-list"></ul>
+    </div>
+
+    <form class="search" action="">
+      <label for="">Search the latest headlines...</label>
+      <input class="input" type="text"/><br>
+      <input type="Submit" />
+      </form>
+    
+    <script>
+
+      
+      const searchFrom = document.querySelector('.search');
+      const input = document.querySelector('imput');
+      const newsList = document.querySelector('.news-list');
+
+    
+      searchFrom.addEventListener('submit', retrieve)
+
+      function retrieve(e){
+
+        
+
+        newsList.innerHTML = ""
+       
+
+          e.preventDefault()
+       
+          const apiKey ='3111b4cb1aba4361a06552b55a471788'
+          let topic = input.value()
+         
+          let url = `https://newsapi.org/v2/sport?q=${input}&apiKey=3111b4cb1aba4361a06552b55a471788`
+
+          getElementById()
+
+          fetch(url).then((response)=>{
+              return res.json()
+          }).then((data)=>{
+              console.log(data)
+                data.articles.forEach(article =>{
+                  let li = document.createElement('li');
+                  let a = document.createElement('a');
+                 a.setAttribute('href', article.url );
+                 a.setAttribute('target', '_blank');
+                 a.textContent=article.title;
+                 li.appendChild(a); 
+                 newsList.appendChild(li);
+           })
+           
+         })
+        
+      
+      }
+      
+  
+  </script>
+</body>
+</html>
